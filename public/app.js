@@ -1,6 +1,7 @@
 // Importation des modules Firebase
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
 import { getAuth, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
+import { signUpWithEmail , loginWithEmail } from "./auth";
 
 // Configuration Firebase
 const firebaseConfig = {
@@ -57,3 +58,7 @@ function loginWithFacebook() {
 // Ajout des écouteurs d'événements aux boutons
 document.getElementById("googleLoginBtn").addEventListener("click", googleLogin);
 document.getElementById("facebookLoginBtn").addEventListener("click", loginWithFacebook);
+
+document.getElementById("signUpBtn").addEventListener("click", () => signUpWithEmail(auth));
+document.getElementById("loginBtn").addEventListener("click", () => loginWithEmail(auth));
+
