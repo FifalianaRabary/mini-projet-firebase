@@ -24,4 +24,19 @@ export function signUpWithEmail(firebaseAuth) {
 }
 
 
+// Fonction de connexion
+export function loginWithEmail(firebaseAuth) {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
 
+    firebaseAuth.signInWithEmailAndPassword(email, password)
+        .then(userCredential => {
+            const user = userCredential.user;
+            alert(`Connecté : ${user.displayName || user.email}`);
+            console.log(user);
+        })
+        .catch(error => {
+            console.error("Erreur de connexion :", error.message);
+            alert(error.message);
+        });
+}
