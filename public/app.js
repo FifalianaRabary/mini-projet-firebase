@@ -7,6 +7,7 @@ import {
   FacebookAuthProvider,
   createUserWithEmailAndPassword,
   updateProfile,
+  signInWithEmailAndPassword,
 } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
 // import { signUpWithEmail , loginWithEmail } from "./auth";
 
@@ -97,6 +98,25 @@ function signUpWithEmail(firebaseAuth) {
     alert(error.message);
   });
 }
+
+function loginWithEmail(firebaseAuth) {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  // Utiliser auth pour l'appel à signInWithEmailAndPassword
+  signInWithEmailAndPassword(firebaseAuth, email, password)
+      .then(userCredential => {
+          const user = userCredential.user;
+          alert(`Connecté : ${user.displayName || user.email}`);
+          console.log(user);
+      })
+      .catch(error => {
+          console.error("Erreur de connexion :", error.message);
+          alert(error.message);
+      });
+}
+
+
 
 // Ajout des écouteurs d'événements aux boutons
 document
