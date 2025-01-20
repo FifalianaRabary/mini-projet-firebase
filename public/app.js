@@ -54,7 +54,7 @@ function loginWithFacebook() {
       document.getElementById("status").innerHTML = `
         <p>Bienvenue, ${user.displayName}!</p>
         <p>Email: ${user.email}</p>
-        <img src="${user.photoURL}" alt="Photo de profil">
+        <img src="https://web.facebook.com/photo/?fbid=2284111131932440&set=a.106947826315459" alt="Photo de profil">
       `;
       console.log("Utilisateur connecté avec Facebook :", user);
     })
@@ -62,6 +62,20 @@ function loginWithFacebook() {
       console.error("Erreur de connexion Facebook :", error);
     });
 }
+
+function signOut() {
+    auth.signOut()
+      .then(() => {
+        console.log("Déconnexion réussie");
+        // Mise à jour de l'interface utilisateur
+        document.getElementById("status").innerHTML = `
+          <p>Vous êtes déconnecté.</p>
+        `;
+      })
+      .catch((error) => {
+        console.error("Erreur lors de la déconnexion :", error);
+      });
+  }
 
 function signUpWithEmail(firebaseAuth) {
   console.log("Bouton S'inscrire cliqué"); // Ajout d'un log pour vérifier si la fonction est appelée
@@ -125,6 +139,9 @@ document
 document
   .getElementById("facebookLoginBtn")
   .addEventListener("click", loginWithFacebook);
+document
+  .getElementById("signOutBtn")
+  .addEventListener("click", signOut);
 
 document
   .getElementById("signUpBtn")
