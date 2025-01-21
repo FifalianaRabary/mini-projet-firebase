@@ -54,7 +54,7 @@ function loginWithFacebook() {
       document.getElementById("status").innerHTML = `
         <p>Bienvenue, ${user.displayName}!</p>
         <p>Email: ${user.email}</p>
-        <img src="https://web.facebook.com/photo/?fbid=2284111131932440&set=a.106947826315459" alt="Photo de profil">
+        <img src="${user.photoURL}" alt="Photo de profil">
       `;
       console.log("Utilisateur connecté avec Facebook :", user);
     })
